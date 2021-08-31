@@ -1,0 +1,15 @@
+{
+  "extends": "standard-with-typescript",
+  "rules": {
+    "@typescript-eslint/strict-boolean-expressions": [
+      2,
+      {
+          "ignoreRhs": true,
+          "allow-boolean-or-undefined": true
+      }
+  ]
+  },
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  }
+}
