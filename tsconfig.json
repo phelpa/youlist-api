@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+      "outDir": "./dist",
+      "module": "commonjs",
+      "target": "es2020",
+      "esModuleInterop": true,
+      "allowJs": true,
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
+      "baseUrl": "./src",
+      "paths": {
+        "*": ["*", "generated/*"]
+      }
+    }
+  }
