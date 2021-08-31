@@ -4,5 +4,4 @@ export type ListModel = {
     description: string,
     user_id: number,
     urlimage: string,
-    created: Date
 }

@@ -14,11 +14,12 @@ export class AddListController implements Controller {
       if (error) {
         return validationError(error)
       }
-      const { name, description, category } = httpRequest.body
+      const { title, description, user_id, urlimage } = httpRequest.body
       const list = await this.addList.add({
-        name,
+        title,
         description,
-        category
+        user_id,
+        urlimage
       })
       return ok({ list })
     } catch (error) {
