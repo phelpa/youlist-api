@@ -1,5 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, OneToMany, BaseEntity } from "typeorm";
 import { List } from './typeorm-list-entity';
+import { Annotation } from './typeorm-annotation-entity';
 
 @Entity('Videos')
 export class Video extends BaseEntity {
@@ -22,9 +23,10 @@ export class Video extends BaseEntity {
     @JoinColumn({ name: "vid_lst_id"})
     owner: List
 
-    @Column({ type: 'timestamptz', default: () => 'CURRENT_TIMESTAMP' })
-    prd_dtcadastro: Date;
+    @OneToMany(() => Annotation, annotation => annotation.owner)
+    annotations: Annotation[]
 
-    // @OneToMany(() => Annotation, annotation => annotation.owner)
-    // annotations: Annotation[]
+    @Column({ type: 'timestamptz', default: () => 'CURRENT_TIMESTAMP' })
+    prd_created: Date;
+
 }
