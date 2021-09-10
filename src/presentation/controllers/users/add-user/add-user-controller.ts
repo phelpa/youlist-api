@@ -1,10 +1,10 @@
-import { HttpResponse, HttpRequest, Controller, AddList } from './add-list-controller-protocols'
+import { HttpResponse, HttpRequest, Controller, AddUser } from './add-user-controller-protocols'
 import { Validation } from 'presentation/protocols/validation'
 import { validationError, serverError, ok } from 'presentation/helpers/http/http-helper'
 
-export class AddListController implements Controller {
+export class AddUserController implements Controller {
   constructor (
-    private readonly addList: AddList,
+    private readonly addUser: AddUser,
     private readonly validation: Validation
   ) {}
 
@@ -14,14 +14,13 @@ export class AddListController implements Controller {
       if (error) {
         return validationError(error)
       }
-      const { title, description, user_id, youtube_id } = httpRequest.body
-      const list = await this.addList.add({
-        title,
-        description,
-        user_id,
-        youtube_id
+      const { name, email, password } = httpRequest.body
+      const user = await this.addUser.add({
+        name,
+        email,
+        password
       })
-      return ok({ list })
+      return ok({ user })
     } catch (error) {
       return serverError(error)
     }
