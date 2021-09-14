@@ -15,7 +15,7 @@ export class Video extends BaseEntity {
     vid_description: string;
 
     @Column({type: "varchar", length: '255'})
-    vid_ytid: string;
+    vid_youtube_id: string;
 
     @Column()
     vid_lst_id: number;
