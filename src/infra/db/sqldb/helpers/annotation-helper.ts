@@ -1,4 +1,4 @@
-import { Annotation } from "../entities/typeorm-annotation-entity"
+import { Annotation } from '../entities/typeorm-annotation-entity'
 import { AddAnnotationParams } from 'domain/usecases/annotation/add-annotation'
 import { AnnotationModel } from 'domain/models/annotation'
 
