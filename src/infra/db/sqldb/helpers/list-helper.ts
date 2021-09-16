@@ -1,10 +1,10 @@
 import { List } from "../entities/typeorm-list-entity"
-import { AddListParams } from 'domain/usecases/list/add-list'
+import { addListParams } from 'domain/usecases/list/add-list'
 import { ListModel } from 'domain/models/list'
 
 export const ListHelper = {
 
-  newList (params : AddListParams): List {
+  newList (params : addListParams): List {
     const list = new List();
     list.lst_title = params.title
     list.lst_description = params.description

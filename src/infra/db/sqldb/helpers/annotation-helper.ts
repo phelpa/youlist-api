@@ -1,10 +1,10 @@
 import { Annotation } from '../entities/typeorm-annotation-entity'
-import { AddAnnotationParams } from 'domain/usecases/annotation/add-annotation'
+import { addAnnotationParams } from 'domain/usecases/annotation/add-annotation'
 import { AnnotationModel } from 'domain/models/annotation'
 
 export const AnnotationHelper = {
 
-  newAnnotation (params : AddAnnotationParams): Annotation {
+  newAnnotation (params : addAnnotationParams): Annotation {
     const annotation = new Annotation()
     annotation.ant_videotime = params.videotime
     annotation.ant_text = params.text

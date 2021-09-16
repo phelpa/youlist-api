@@ -1,6 +1,6 @@
-import { AddListParams } from 'domain/usecases/list/add-list'
+import { addListParams } from 'domain/usecases/list/add-list'
 import { ListModel } from 'domain/models/list'
 
 export interface AddListRepository {
-  add: (list: AddListParams) => Promise<ListModel>
+  add: (list: addListParams) => Promise<ListModel>
 }

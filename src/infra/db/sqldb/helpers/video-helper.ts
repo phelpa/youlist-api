@@ -1,10 +1,10 @@
 import { Video } from "../entities/typeorm-video-entity"
-import { AddVideoParams } from 'domain/usecases/video/add-video'
+import { addVideoParams } from 'domain/usecases/video/add-video'
 import { VideoModel } from 'domain/models/video'
 
 export const VideoHelper = {
 
-  newVideo (params : AddVideoParams): Video {
+  newVideo (params : addVideoParams): Video {
     const video = new Video()
     video.vid_title = params.title
     video.vid_description = params.description

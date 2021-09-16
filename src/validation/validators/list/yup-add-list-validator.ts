@@ -1,9 +1,9 @@
 import { Validation } from 'presentation/protocols/validation'
 import * as Yup from 'yup'
-import { AddListParams } from 'domain/usecases/list/add-list'
+import { addListParams } from 'domain/usecases/list/add-list'
 
 export class YupAddListValidator implements Validation {
-  async validate(object: AddListParams): Promise<Error> {
+  async validate(object: addListParams): Promise<Error> {
 
     const schema = Yup.object().shape({
       title: Yup.string().required(),

@@ -1,9 +1,9 @@
 import { Validation } from 'presentation/protocols/validation'
 import * as Yup from 'yup'
-import { AddVideoParams } from 'domain/usecases/video/add-video'
+import { addVideoParams } from 'domain/usecases/video/add-video'
 
 export class YupAddVideoValidator implements Validation {
-  async validate(object: AddVideoParams): Promise<Error> {
+  async validate(object: addVideoParams): Promise<Error> {
     const schema = Yup.object().shape({
       title: Yup.string().required(),
       description: Yup.string().required(),
