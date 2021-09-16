@@ -1,6 +1,8 @@
 import { Validation } from 'presentation/protocols/validation'
-import { YupAddUserValidator } from 'validation/validators/user/yup-add-user-validator'
+import { BaseYupValidator } from 'validation/validators/base-yup-validator'
+import { YupAddUserSchema } from 'validation/validators/user/yup-add-user-schema'
 
 export const makeAddUserValidation = (): Validation => {
-  return new YupAddUserValidator()
+  const addUserSchema = YupAddUserSchema()
+  return new BaseYupValidator(addUserSchema)
 }

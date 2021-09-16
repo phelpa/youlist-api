@@ -1,11 +1,11 @@
-import { AddUser, AddUserParams, UserModel, AddUserRepository } from './db-add-user-protocols'
+import { AddUser, addUserParams, UserModel, AddUserRepository } from './db-add-user-protocols'
 
 export class DbAddUser implements AddUser {
   constructor (
     private readonly addUserRepository: AddUserRepository,
   ) {}
 
-  async add (user: AddUserParams): Promise<UserModel> {
+  async add (user: addUserParams): Promise<UserModel> {
     const addedUser = await this.addUserRepository.add(user)
     return addedUser
   }

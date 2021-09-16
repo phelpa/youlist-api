@@ -1,10 +1,10 @@
 import { User } from "../entities/typeorm-user-entity"
-import { AddUserParams } from 'domain/usecases/user/add-user'
+import { addUserParams } from 'domain/usecases/user/add-user'
 import { UserModel } from 'domain/models/user'
 
 export const UserHelper = {
 
-  newUser (params : AddUserParams): User {
+  newUser (params : addUserParams): User {
     const user = new User();
     user.usr_name = params.name
     user.usr_email = params.email
