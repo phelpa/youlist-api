@@ -1,6 +1,8 @@
 import { Validation } from 'presentation/protocols/validation'
-import { YupAddVideoValidator } from 'validation/validators/video/yup-add-video-validator'
+import { BaseYupValidator } from 'validation/base-yup-validator'
+import { YupAddVideoSchema } from 'validation/yupschemas/video/yup-add-video-schema'
 
 export const makeAddVideoValidation = (): Validation => {
-  return new YupAddVideoValidator()
+  const addVideoSchema = YupAddVideoSchema()
+  return new BaseYupValidator(addVideoSchema)
 }
