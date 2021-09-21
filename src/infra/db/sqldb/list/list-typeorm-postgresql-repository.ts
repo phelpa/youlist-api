@@ -1,9 +1,10 @@
 import { ListHelper } from '../helpers/list-helper'
 import { AddListRepository } from 'data/protocols/db/list/add-list-repository'
+import { GetListsRepository } from 'data/protocols/db/list/get-lists-repository'
 import { ListModel } from 'domain/models/list'
 import { addListParams } from 'domain/usecases/list/add-list'
 
-export class ListTypeOrmPostgreSqlRepository implements AddListRepository {
+export class ListTypeOrmPostgreSqlRepository implements AddListRepository, GetListsRepository {
   async add (data: addListParams): Promise<ListModel> {
     const list = ListHelper.newList(data)
     const insertedList = await list.save()
