@@ -29,7 +29,7 @@ export const ListHelper = {
      ...(list.id && {"lst_id": list.id}),
      ...(list.title && {"lst_title": list.title}),
      ...(list.description && {"lst_description": list.description}),
-     ...(list.user_id && {"lst_user_id": list.user_id}),
+     ...(list.user_id && {"lst_usr_id": list.user_id}),
      ...(list.youtube_id && {"lst_youtube_id": list.youtube_id})
     }
     return mappedList

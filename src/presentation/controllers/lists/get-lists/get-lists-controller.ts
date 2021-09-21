@@ -8,15 +8,18 @@ export class GetListsController implements Controller {
     private readonly validation: Validation
   ) {}
 
-  async handle (httpRequest: HttpRequest): Promise<HttpResponse> {
+  async handle (httpRequest: HttpRequest): Promise<any> {
     try {
       const error = await this.validation.validate(httpRequest.body)
       if (error) {
         return validationError(error)
       }
+      console.log('aldair')
+  
       const lists = await this.getLists.get(httpRequest.body)
       return ok({ lists })
     } catch (error) {
+      console.log(error)
       return serverError(error)
     }
   }
