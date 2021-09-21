@@ -1,10 +1,10 @@
-import { HttpResponse, HttpRequest, Controller, GetLists } from './get-lists-controller-protocols'
+import { HttpResponse, HttpRequest, Controller, GetAnnotations } from './get-annotations-controller-protocols'
 import { Validation } from 'presentation/protocols/validation'
 import { validationError, serverError, ok } from 'presentation/helpers/http/http-helper'
 
-export class GetListsController implements Controller {
+export class GetAnnotationsController implements Controller {
   constructor (
-    private readonly getLists: GetLists,
+    private readonly getAnnotations: GetAnnotations,
     private readonly validation: Validation
   ) {}
 
@@ -14,9 +14,9 @@ export class GetListsController implements Controller {
       if (error) {
         return validationError(error)
       }
-  
-      const lists = await this.getLists.get(httpRequest.body)
-      return ok({ lists })
+
+      const annotations = await this.getAnnotations.get(httpRequest.body)
+      return ok({ annotations })
     } catch (error) {
       console.log(error)
       return serverError(error)

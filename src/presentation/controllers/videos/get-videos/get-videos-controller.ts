@@ -8,7 +8,7 @@ export class GetVideosController implements Controller {
     private readonly validation: Validation
   ) {}
 
-  async handle (httpRequest: HttpRequest): Promise<any> {
+  async handle (httpRequest: HttpRequest): Promise<HttpResponse> {
     try {
       const error = await this.validation.validate(httpRequest.body)
       if (error) {
