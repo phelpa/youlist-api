@@ -1,10 +1,10 @@
-import { HttpResponse, HttpRequest, Controller, GetLists } from './get-lists-controller-protocols'
+import { HttpResponse, HttpRequest, Controller, GetVideos } from './get-videos-controller-protocols'
 import { Validation } from 'presentation/protocols/validation'
 import { validationError, serverError, ok } from 'presentation/helpers/http/http-helper'
 
-export class GetListsController implements Controller {
+export class GetVideosController implements Controller {
   constructor (
-    private readonly getLists: GetLists,
+    private readonly getVideos: GetVideos,
     private readonly validation: Validation
   ) {}
 
@@ -15,8 +15,8 @@ export class GetListsController implements Controller {
         return validationError(error)
       }
   
-      const lists = await this.getLists.get(httpRequest.body)
-      return ok({ lists })
+      const videos = await this.getVideos.get(httpRequest.body)
+      return ok({ videos })
     } catch (error) {
       console.log(error)
       return serverError(error)
