@@ -3,6 +3,6 @@ import { BaseYupValidator } from 'validation/base-yup-validator'
 import { YupAddListSchema } from 'validation/yupschemas/list/yup-add-list-schema'
 
 export const makeAddListValidation = (): Validation => {
-  const addUserSchema = YupAddListSchema()
-  return new BaseYupValidator(addUserSchema)
+  const addListSchema = YupAddListSchema()
+  return new BaseYupValidator(addListSchema)
 }
