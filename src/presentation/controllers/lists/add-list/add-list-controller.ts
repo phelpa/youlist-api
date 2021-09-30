@@ -1,14 +1,23 @@
-import { HttpResponse, HttpRequest, Controller, AddList } from './add-list-controller-protocols'
+import {
+  HttpResponse,
+  HttpRequest,
+  Controller,
+  AddList,
+} from './add-list-controller-protocols'
 import { Validation } from 'presentation/protocols/validation'
-import { validationError, serverError, ok } from 'presentation/helpers/http/http-helper'
+import {
+  validationError,
+  serverError,
+  ok,
+} from 'presentation/helpers/http/http-helper'
 
 export class AddListController implements Controller {
-  constructor (
+  constructor(
     private readonly addList: AddList,
     private readonly validation: Validation
   ) {}
 
-  async handle (httpRequest: HttpRequest): Promise<HttpResponse> {
+  async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
     try {
       const error = await this.validation.validate(httpRequest.body)
       if (error) {
@@ -19,7 +28,7 @@ export class AddListController implements Controller {
         title,
         description,
         user_id,
-        youtube_id
+        youtube_id,
       })
       return ok({ list })
     } catch (error) {

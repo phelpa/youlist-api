@@ -1,24 +1,32 @@
-import { HttpResponse, HttpRequest, Controller, GetLists } from './get-lists-controller-protocols'
+import {
+  HttpResponse,
+  HttpRequest,
+  Controller,
+  GetLists
+} from './get-lists-controller-protocols'
 import { Validation } from 'presentation/protocols/validation'
-import { validationError, serverError, ok } from 'presentation/helpers/http/http-helper'
+import {
+  validationError,
+  serverError,
+  ok
+} from 'presentation/helpers/http/http-helper'
 
 export class GetListsController implements Controller {
-  constructor (
+  constructor(
     private readonly getLists: GetLists,
     private readonly validation: Validation
   ) {}
 
-  async handle (httpRequest: HttpRequest): Promise<HttpResponse> {
+  async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
     try {
-      const error = await this.validation.validate(httpRequest.body)
+      const error = await this.validation.validate(httpRequest.query)
       if (error) {
         return validationError(error)
       }
-  
-      const lists = await this.getLists.get(httpRequest.body)
+
+      const lists = await this.getLists.get(httpRequest.query)
       return ok({ lists })
     } catch (error) {
-      console.log(error)
       return serverError(error)
     }
   }
