@@ -3,5 +3,5 @@ export type AnnotationModel = {
   video_id: number
   videotime: number
   text: string
-  date?: Date
+  date: Date
 }
