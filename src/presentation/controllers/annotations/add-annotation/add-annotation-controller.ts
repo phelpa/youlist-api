@@ -1,14 +1,23 @@
-import { HttpResponse, HttpRequest, Controller, AddAnnotation } from './add-annotation-controller-protocols'
+import {
+  HttpResponse,
+  HttpRequest,
+  Controller,
+  AddAnnotation
+} from './add-annotation-controller-protocols'
 import { Validation } from 'presentation/protocols/validation'
-import { validationError, serverError, ok } from 'presentation/helpers/http/http-helper'
+import {
+  validationError,
+  serverError,
+  ok
+} from 'presentation/helpers/http/http-helper'
 
 export class AddAnnotationController implements Controller {
-  constructor (
+  constructor(
     private readonly addAnnotation: AddAnnotation,
     private readonly validation: Validation
   ) {}
 
-  async handle (httpRequest: HttpRequest): Promise<HttpResponse> {
+  async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
     try {
       const error = await this.validation.validate(httpRequest.body)
       if (error) {

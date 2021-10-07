@@ -10,13 +10,14 @@ export const YupGetListsSchema = () => {
   const schema: Yup.SchemaOf<getListsSchema> = Yup.object()
     .noUnknown()
     .shape({
-      id: Yup.string().matches(/^\d+$/, 'The field should have digits only'),
+      id: Yup.string()
+        .matches(/^\d+$/, 'The field should have digits only')
+        .min(1),
       title: Yup.string().min(1),
       description: Yup.string().min(1),
-      user_id: Yup.string().matches(
-        /^\d+$/,
-        'The field should have digits only'
-      ),
+      user_id: Yup.string()
+        .matches(/^\d+$/, 'The field should have digits only')
+        .min(1),
       youtube_id: Yup.string().min(10)
     })
     .strict()

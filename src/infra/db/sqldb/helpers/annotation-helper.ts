@@ -17,6 +17,7 @@ export const AnnotationHelper = {
       video_id: annotation.ant_vid_id,
       videotime: annotation.ant_videotime,
       text: annotation.ant_text,
+      date: annotation.ant_created
     }
     return mappedAnnotation
   },
@@ -26,7 +27,7 @@ export const AnnotationHelper = {
       ...(annotation.id && { ant_id: annotation.id }),
       ...(annotation.video_id && { ant_vid_id: annotation.video_id }),
       ...(annotation.videotime && { ant_videotime: annotation.videotime }),
-      ...(annotation.text && { ant_vid_id: annotation.text }),
+      ...(annotation.text && { ant_vid_id: annotation.text })
     }
     return mappedAnnotation
   },
@@ -38,5 +39,5 @@ export const AnnotationHelper = {
       this.mapper(annotation)
     )
     return modelMappedAnnotations
-  },
+  }
 }
