@@ -34,7 +34,10 @@ export const AnnotationHelper = {
 
   async find(annotation: Partial<AnnotationModel>): Promise<AnnotationModel[]> {
     const dbMapped = this.dbMapper(annotation)
-    const annotations = await Annotation.find(dbMapped)
+    const annotations = await Annotation.find({
+      where: dbMapped,
+      order: { ant_videotime: 'ASC' }
+    })
     const modelMappedAnnotations = annotations.map((annotation) =>
       this.mapper(annotation)
     )
