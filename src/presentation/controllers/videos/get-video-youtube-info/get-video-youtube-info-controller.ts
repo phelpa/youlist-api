@@ -24,10 +24,11 @@ export class GetVideoYoutubeInfoController implements Controller {
         return validationError(error)
       }
 
-      const videos = await this.videoYoutubeInfo.get(httpRequest.query)
-      return ok({ videos })
+      const video = await this.videoYoutubeInfo.get(
+        httpRequest.query.youtube_id
+      )
+      return ok({ video })
     } catch (error) {
-      console.log(error)
       return serverError(error)
     }
   }

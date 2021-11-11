@@ -1,3 +1,3 @@
 export interface HttpGetClient<T = any> {
-  get: (url: string, params?: Object) => Promise<T>
+  get: <T>(url: string, params?: Object) => Promise<T>
 }
