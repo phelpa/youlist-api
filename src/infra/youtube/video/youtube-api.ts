@@ -2,7 +2,7 @@ import { GetVideoYoutubeInfoApi } from 'data/protocols/db/video/get-video-youtub
 import { YoutubeVideo } from 'domain/models/youtube-video'
 import { HttpGetClient } from 'infra/httpClient/protocols/http-get-client'
 import { YoutubeResponse } from './protocols'
-
+import { InvalidYoutubeIdError } from './errors'
 export class YoutubeApi implements GetVideoYoutubeInfoApi {
   private readonly baseUrl = 'https://www.googleapis.com/youtube/v3'
 
@@ -14,6 +14,10 @@ export class YoutubeApi implements GetVideoYoutubeInfoApi {
   async getVideoInfo(youtube_id: string): Promise<YoutubeVideo> {
     const url = this.concatenateYoutubeIdToUrl(youtube_id)
     const response = await this.httpClient.get<YoutubeResponse>(url)
+
+    if (!response.items.length) {
+      throw new InvalidYoutubeIdError()
+    }
 
     const video = {
       youtube_id: response.items[0].id,

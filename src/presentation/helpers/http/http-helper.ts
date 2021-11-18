@@ -8,7 +8,7 @@ export const badRequest = (error: Error): HttpResponse => ({
 
 export const validationError = (reason: object): HttpResponse => ({
   statusCode: 422,
-  body: { "message" : reason }
+  body: { message: reason }
 })
 
 export const forbidden = (error: Error): HttpResponse => ({
@@ -21,10 +21,20 @@ export const unauthorized = (): HttpResponse => ({
   body: new UnauthorizedError()
 })
 
-export const serverError = (error: Error): HttpResponse => ({
-  statusCode: 500,
-  body: new ServerError(error.stack)
-})
+export const serverError = (error: Error): HttpResponse => {
+  console.log(error)
+  return {
+    statusCode: 500,
+    body: new ServerError(error.stack)
+  }
+}
+
+export const youtubeApiError = (error: Error): HttpResponse => {
+  return {
+    statusCode: 500,
+    body: { message: error.message }
+  }
+}
 
 export const ok = (data: any): HttpResponse => ({
   statusCode: 200,

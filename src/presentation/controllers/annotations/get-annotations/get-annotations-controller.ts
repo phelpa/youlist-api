@@ -27,7 +27,6 @@ export class GetAnnotationsController implements Controller {
       const annotations = await this.getAnnotations.get(httpRequest.query)
       return ok({ annotations })
     } catch (error) {
-      console.log(error)
       return serverError(error)
     }
   }

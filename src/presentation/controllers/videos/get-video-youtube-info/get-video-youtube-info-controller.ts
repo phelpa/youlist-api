@@ -8,7 +8,8 @@ import { Validation } from 'presentation/protocols/validation'
 import {
   validationError,
   serverError,
-  ok
+  ok,
+  youtubeApiError
 } from 'presentation/helpers/http/http-helper'
 
 export class GetVideoYoutubeInfoController implements Controller {
@@ -29,6 +30,9 @@ export class GetVideoYoutubeInfoController implements Controller {
       )
       return ok({ video })
     } catch (error) {
+      if (error.name == 'Invalid YoutubeId') {
+        return youtubeApiError(error)
+      }
       return serverError(error)
     }
   }

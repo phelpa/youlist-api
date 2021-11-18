@@ -27,7 +27,6 @@ export class GetVideosController implements Controller {
       const videos = await this.getVideos.get(httpRequest.query)
       return ok({ videos })
     } catch (error) {
-      console.log(error)
       return serverError(error)
     }
   }
