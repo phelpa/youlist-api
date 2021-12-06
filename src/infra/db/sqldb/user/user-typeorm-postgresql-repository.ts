@@ -1,19 +1,26 @@
 import { UserHelper } from '../helpers/user-helper'
 import { AddUserRepository } from 'data/protocols/db/user/add-user-repository'
+import { CheckAccountByEmailRepository } from 'data/protocols/db/user/check-account-by-email-repository'
 import { UserModel } from 'domain/models/user'
 import { addUserParams } from 'domain/usecases/user/add-user'
 
-export class UserTypeOrmPostgreSqlRepository implements AddUserRepository {
-  async add (data: addUserParams): Promise<UserModel> {
+export class UserTypeOrmPostgreSqlRepository
+  implements AddUserRepository, CheckAccountByEmailRepository
+{
+  async add(data: addUserParams): Promise<UserModel> {
     const user = UserHelper.newUser(data)
     const insertedUser = await user.save()
     const mappedUser = UserHelper.mapper(insertedUser)
     return mappedUser
   }
 
-  async get (params: Partial<UserModel>): Promise<UserModel[]> {
+  async get(params: Partial<UserModel>): Promise<UserModel[]> {
     const users = await UserHelper.find(params)
     return users
   }
 
+  async checkByEmail(email: string): Promise<Boolean> {
+    const exists = await this.get({ email })
+    return new Boolean(exists)
+  }
 }
