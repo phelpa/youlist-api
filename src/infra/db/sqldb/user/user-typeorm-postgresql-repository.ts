@@ -21,6 +21,6 @@ export class UserTypeOrmPostgreSqlRepository
 
   async checkByEmail(email: string): Promise<Boolean> {
     const exists = await this.get({ email })
-    return new Boolean(exists)
+    return Boolean(exists)
   }
 }

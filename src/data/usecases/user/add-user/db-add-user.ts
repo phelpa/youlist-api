@@ -15,13 +15,13 @@ export class DbAddUser implements AddUser {
   ) {}
 
   async add(userParams: addUserParams): Promise<UserModel> {
-    const { user, session, error } = await this.auth.signUp(
+    const signUpUser = await this.auth.signUp(
       userParams.email,
       userParams.password
     )
 
-    if (error) {
-      console.log(error)
+    if (signUpUser.error) {
+      console.log(signUpUser.error)
       return
     }
 
