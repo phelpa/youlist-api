@@ -4,6 +4,8 @@ import app from './config/app'
 
 TypeOrmHelper.connect()
   .then(async () => {
-    app.listen(env.port, () => console.log(`Server running at http://localhost:${env.port}`))
+    app.listen(env.port, () =>
+      console.log(`Server running at http://localhost:${env.port}`)
+    )
   })
   .catch(console.error)

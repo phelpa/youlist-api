@@ -1,5 +1,5 @@
-import { UserToken } from '../../models/user'
+import { UserModel } from '../../models/user'
 
 export interface ValidateToken {
-  validateToken: (token: string) => Promise<UserToken>
+  validateToken: (token: string) => Promise<UserModel>
 }

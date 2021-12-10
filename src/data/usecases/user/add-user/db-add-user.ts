@@ -25,15 +25,18 @@ export class DbAddUser implements AddUser {
       return
     }
 
+    console.log(signUpUser, 'signUpUser')
+
     const exists = await this.checkAccountByEmailRepository.checkByEmail(
       userParams.email
     )
 
-    let newUser
-
-    if (!exists) {
-      newUser = await this.addUserRepository.add(userParams)
+    if (exists) {
+      console.log('user already exists')
+      return
     }
+
+    const newUser = await this.addUserRepository.add(userParams)
 
     return newUser
   }

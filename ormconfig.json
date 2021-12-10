@@ -1,24 +1,18 @@
 {
-   "type": "postgres",
-   "host": "localhost",
-   "port": 5432,
-   "username": "youlist",
-   "password": "youlist",
-   "database": "youlist",
-   "synchronize": true,
-   "logging": false,
-   "entities": [
-      "src/infra/db/sqldb/entities/**/*.ts"
-   ],
-   "migrations": [
-      "src/migration/**/*.ts"
-   ],
-   "subscribers": [
-      "src/subscriber/**/*.ts"
-   ],
-   "cli": {
-      "entitiesDir": "src/infra/db/sqldb/entities",
-      "migrationsDir": "src/migration",
-      "subscribersDir": "src/subscriber"
-   }
+  "type": "postgres",
+  "host": "db.kmudvvovqucxhlkrjouo.supabase.co",
+  "port": 5432,
+  "username": "postgres",
+  "password": "Phelpatri2001!",
+  "database": "postgres",
+  "synchronize": true,
+  "logging": false,
+  "entities": ["src/infra/db/sqldb/entities/**/*.ts"],
+  "migrations": ["src/migration/**/*.ts"],
+  "subscribers": ["src/subscriber/**/*.ts"],
+  "cli": {
+    "entitiesDir": "src/infra/db/sqldb/entities",
+    "migrationsDir": "src/migration",
+    "subscribersDir": "src/subscriber"
+  }
 }
