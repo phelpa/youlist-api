@@ -1,5 +1,5 @@
-import { UserSignIn } from 'domain/models/user'
+//import { UserSignIn } from 'domain/models/authentication'
 
 export interface AuthenticationSignIn {
-  signIn(email: string, password: string): Promise<UserSignIn>
+  signIn(email: string, password: string): Promise<any>
 }

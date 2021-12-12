@@ -1,7 +1,7 @@
 import { AuthenticationSignIn } from 'data/protocols/auth/sign-in'
 import { AuthenticationSignUp } from 'data/protocols/auth/sign-up'
 import { AuthenticationValidateToken } from 'data/protocols/auth/validate-token'
-import { UserAuth, UserToken, UserSignIn } from 'domain/models/user'
+import { UserAuth, UserToken, UserSignIn } from 'domain/models/authentication'
 import { supabase } from 'infra/db/sqldb/helpers/supabase-helper'
 
 export class Authentication
@@ -18,12 +18,18 @@ export class Authentication
     return user
   }
 
-  async signIn(email: string, password: string): Promise<UserSignIn> {
+  async signIn(email: string, password: string): Promise<any> {
     const user = await supabase.auth.signIn({
       email,
       password
     })
-    return user
+
+    const userSignIn = {
+      email: user.user.email,
+      token: user.session.access_token
+    }
+
+    return userSignIn
   }
 
   async validateToken(token: string): Promise<UserToken> {

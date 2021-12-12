@@ -1,5 +1,5 @@
-import { Token } from '../../models/user'
+import { UserSignIn } from '../../models/authentication'
 
 export interface SignIn {
-  signIn: (email: string, password: string) => Promise<Token>
+  signIn: (email: string, password: string) => Promise<UserSignIn>
 }

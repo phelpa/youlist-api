@@ -12,7 +12,6 @@ export class ValidateTokenController implements Controller {
   async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
     try {
       const { token } = httpRequest.body
-      console.log(token)
       const user = await this.auth.validateToken(token)
       return ok({ user })
     } catch (error) {
