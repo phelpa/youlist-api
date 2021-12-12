@@ -1,3 +1,5 @@
-export interface SignIn {
-  signUp(email: string, password: string): void
+import { UserSignIn } from 'domain/models/user'
+
+export interface AuthenticationSignIn {
+  signIn(email: string, password: string): Promise<UserSignIn>
 }

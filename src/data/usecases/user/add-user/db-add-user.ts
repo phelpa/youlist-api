@@ -5,13 +5,13 @@ import {
   AddUserRepository,
   CheckAccountByEmailRepository
 } from './db-add-user-protocols'
-import { SignUp } from 'data/protocols/auth/sign-up'
+import { AuthenticationSignUp } from 'data/protocols/auth/sign-up'
 
 export class DbAddUser implements AddUser {
   constructor(
     private readonly addUserRepository: AddUserRepository,
     private readonly checkAccountByEmailRepository: CheckAccountByEmailRepository,
-    private readonly auth: SignUp
+    private readonly auth: AuthenticationSignUp
   ) {}
 
   async add(userParams: addUserParams): Promise<UserModel> {
@@ -24,8 +24,6 @@ export class DbAddUser implements AddUser {
       console.log(signUpUser.error)
       return
     }
-
-    console.log(signUpUser, 'signUpUser')
 
     const exists = await this.checkAccountByEmailRepository.checkByEmail(
       userParams.email

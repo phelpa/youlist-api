@@ -5,6 +5,18 @@ export type UserModel = {
   password?: string
 }
 
+export type Token = {
+  token: string
+}
+
+export type UserSignIn = {
+  session: any
+  user: any
+  provider?: any
+  url?: any
+  error: any
+}
+
 export type UserAuth = {
   user: any
   session: any
