@@ -23,8 +23,6 @@ export class AuthSignIn implements SignIn {
       ...userSignIn
     }
 
-    console.log(userData, 'oia userData')
-
     return userData
   }
 }

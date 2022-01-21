@@ -20,6 +20,7 @@ export class UserTypeOrmPostgreSqlRepository
 
   async get(params: Partial<UserModel>): Promise<UserModel[]> {
     const users = await UserHelper.find(params)
+    console.log(users, 'users no repo')
     return users
   }
 

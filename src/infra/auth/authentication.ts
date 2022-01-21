@@ -34,6 +34,7 @@ export class Authentication
 
   async validateToken(token: string): Promise<UserToken> {
     const user = await supabase.auth.api.getUser(token)
+    console.log(user, 'olha o user')
     return user
   }
 }

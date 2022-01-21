@@ -14,13 +14,15 @@ export class AuthValidateToken implements ValidateToken {
 
     if (error) {
       console.log(error)
-      return
+      throw new Error('Error validating token')
     }
 
     const userInfo = await this.userRepo.get({ email: user.email })
 
+    console.log(userInfo, 'userInfo')
     if (!userInfo) {
       console.log('invalid token')
+      throw new Error('Invalid Token')
     }
 
     return userInfo[0]
