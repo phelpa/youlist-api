@@ -2,14 +2,14 @@ import {
   HttpResponse,
   HttpRequest,
   Controller,
-  AddList,
+  AddList
 } from './add-list-controller-protocols'
 import { Validation } from 'presentation/protocols/validation'
 import {
   validationError,
   serverError,
-  ok,
-} from 'presentation/helpers/http/http-helper'
+  ok
+} from 'presentation/helpers/http-helper'
 
 export class AddListController implements Controller {
   constructor(
@@ -28,7 +28,7 @@ export class AddListController implements Controller {
         title,
         description,
         user_id,
-        youtube_id,
+        youtube_id
       })
       return ok({ list })
     } catch (error) {

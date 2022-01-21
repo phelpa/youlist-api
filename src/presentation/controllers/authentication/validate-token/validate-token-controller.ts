@@ -4,7 +4,7 @@ import {
   Controller,
   ValidateToken
 } from './validate-token-controller-protocols'
-import { serverError, ok } from 'presentation/helpers/http/http-helper'
+import { serverError, ok } from 'presentation/helpers/http-helper'
 
 export class ValidateTokenController implements Controller {
   constructor(private readonly auth: ValidateToken) {}

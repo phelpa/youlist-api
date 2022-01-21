@@ -9,7 +9,7 @@ import {
   validationError,
   serverError,
   ok
-} from 'presentation/helpers/http/http-helper'
+} from 'presentation/helpers/http-helper'
 
 export class GetListsController implements Controller {
   constructor(

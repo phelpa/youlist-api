@@ -10,7 +10,7 @@ import {
   serverError,
   ok,
   youtubeApiError
-} from 'presentation/helpers/http/http-helper'
+} from 'presentation/helpers/http-helper'
 
 export class GetVideoYoutubeInfoController implements Controller {
   constructor(

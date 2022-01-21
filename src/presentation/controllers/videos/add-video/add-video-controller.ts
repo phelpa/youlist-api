@@ -1,14 +1,23 @@
-import { HttpResponse, HttpRequest, Controller, AddVideo } from './add-video-controller-protocols'
+import {
+  HttpResponse,
+  HttpRequest,
+  Controller,
+  AddVideo
+} from './add-video-controller-protocols'
 import { Validation } from 'presentation/protocols/validation'
-import { validationError, serverError, ok } from 'presentation/helpers/http/http-helper'
+import {
+  validationError,
+  serverError,
+  ok
+} from 'presentation/helpers/http-helper'
 
 export class AddVideoController implements Controller {
-  constructor (
+  constructor(
     private readonly addVideo: AddVideo,
     private readonly validation: Validation
   ) {}
 
-  async handle (httpRequest: HttpRequest): Promise<HttpResponse> {
+  async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
     try {
       const error = await this.validation.validate(httpRequest.body)
       if (error) {
