@@ -8,9 +8,9 @@ import { Validation } from 'presentation/protocols/validation'
 import {
   validationError,
   serverError,
-  ok,
-  youtubeApiError
+  ok
 } from 'presentation/helpers/http-helper'
+import { youtubeApiError } from 'presentation/helpers/errors-helper'
 
 export class GetVideoYoutubeInfoController implements Controller {
   constructor(

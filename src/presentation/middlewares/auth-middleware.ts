@@ -8,12 +8,13 @@ export class AuthMiddleware implements Middleware {
 
   async handle(request: AuthMiddleware.Request): Promise<HttpResponse> {
     try {
-      console.log('entrou no handle')
-      const { accessToken } = request
-      if (accessToken) {
-        const account = await this.auth.validateToken(accessToken)
+      const { accesstoken } = request
+
+      if (accesstoken) {
+        const account = await this.auth.validateToken(accesstoken)
+
         if (account) {
-          return ok({ accountId: account.id })
+          return ok(account)
         }
       }
       return forbidden(new AccessDeniedError())
@@ -25,6 +26,6 @@ export class AuthMiddleware implements Middleware {
 
 export namespace AuthMiddleware {
   export type Request = {
-    accessToken?: string
+    accesstoken?: string
   }
 }

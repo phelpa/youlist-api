@@ -10,6 +10,7 @@ import {
   serverError,
   ok
 } from 'presentation/helpers/http-helper'
+import { emailInUseError } from 'presentation/helpers/errors-helper'
 
 export class AddUserController implements Controller {
   constructor(
@@ -31,6 +32,9 @@ export class AddUserController implements Controller {
       })
       return ok({ user })
     } catch (error) {
+      if (error.name == 'EmailInUseError') {
+        return emailInUseError(error)
+      }
       return serverError(error)
     }
   }

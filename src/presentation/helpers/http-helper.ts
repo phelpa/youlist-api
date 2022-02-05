@@ -29,13 +29,6 @@ export const serverError = (error: Error): HttpResponse => {
   }
 }
 
-export const youtubeApiError = (error: Error): HttpResponse => {
-  return {
-    statusCode: 500,
-    body: { message: error.message }
-  }
-}
-
 export const ok = (data: any): HttpResponse => ({
   statusCode: 200,
   body: data
