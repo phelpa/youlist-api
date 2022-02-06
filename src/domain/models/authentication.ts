@@ -26,3 +26,8 @@ export type UserLogin = {
 export type Token = {
   token: string
 }
+
+export interface UserUpdateAccount {
+  name?: string
+  new_password?: string
+}
