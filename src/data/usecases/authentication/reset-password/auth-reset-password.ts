@@ -8,7 +8,6 @@ export class AuthResetPassword implements ResetPassword {
     const userSignIn = await this.auth.resetPassword(email)
 
     if (userSignIn.error) {
-      console.log(userSignIn.error)
       return
     }
 

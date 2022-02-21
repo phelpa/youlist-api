@@ -4,3 +4,10 @@ export type UserModel = {
   email: string
   password?: string
 }
+
+export type UserToken = {
+  id: number
+  name: string
+  email: string
+  token: string
+}

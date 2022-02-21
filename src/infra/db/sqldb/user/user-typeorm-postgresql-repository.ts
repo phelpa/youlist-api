@@ -2,7 +2,7 @@ import { UserHelper } from '../helpers/user-helper'
 import { AddUserRepository } from 'data/protocols/db/user/add-user-repository'
 import { GetUsersRepository } from 'data/protocols/db/user/get-user-id-by-email-repository'
 import { CheckAccountByEmailRepository } from 'data/protocols/db/user/check-account-by-email-repository'
-import { UserModel } from 'domain/models/user'
+import { UserToken, UserModel } from 'domain/models/user'
 import { addUserParams } from 'domain/usecases/user/add-user'
 
 export class UserTypeOrmPostgreSqlRepository
@@ -20,7 +20,6 @@ export class UserTypeOrmPostgreSqlRepository
 
   async get(params: Partial<UserModel>): Promise<UserModel[]> {
     const users = await UserHelper.find(params)
-    console.log(users, 'users no repo')
     return users
   }
 

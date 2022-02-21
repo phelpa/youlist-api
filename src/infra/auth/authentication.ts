@@ -33,6 +33,9 @@ export class Authentication
       password
     })
 
+    if (user.error) {
+      return { error: user.error }
+    }
     const userSignIn = {
       email: user.user.email,
       token: user.session.access_token
@@ -43,13 +46,11 @@ export class Authentication
 
   async validateToken(token: string): Promise<UserToken> {
     const user = await supabase.auth.api.getUser(token)
-    console.log(user, 'olha o user')
     return user
   }
 
   async resetPassword(email: string): Promise<any> {
     const user = await supabase.auth.api.resetPasswordForEmail(email)
-    console.log(user, 'olha o user')
     return user
   }
 
@@ -57,7 +58,6 @@ export class Authentication
     const user = await supabase.auth.api.updateUser(token, {
       password: data.new_password
     })
-    console.log(user, 'olha o user')
     return user
   }
 }

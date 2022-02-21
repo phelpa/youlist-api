@@ -14,7 +14,7 @@ export class DbAddUser implements AddUser {
     private readonly auth: AuthenticationSignUp
   ) {}
 
-  async add(userParams: addUserParams): Promise<UserModel> {
+  async add(userParams: addUserParams): Promise<any> {
     const exists = await this.checkAccountByEmailRepository.checkByEmail(
       userParams.email
     )
@@ -23,18 +23,24 @@ export class DbAddUser implements AddUser {
       throw new EmailInUseError()
     }
 
+    const newUser = await this.addUserRepository.add(userParams)
+
+    console.log(newUser, 'oia newUser')
     const signUpUser = await this.auth.signUp(
       userParams.email,
       userParams.password
     )
 
-    if (signUpUser.error) {
-      console.log(signUpUser.error)
-      throw new Error(signUpUser.error)
+    if (signUpUser.error?.message === 'User already registered') {
+      throw new EmailInUseError()
     }
 
-    const newUser = await this.addUserRepository.add(userParams)
+    console.log(signUpUser, ' oia signUpUser')
+    const userData = {
+      ...newUser,
+      token: signUpUser.session.access_token
+    }
 
-    return newUser
+    return userData
   }
 }

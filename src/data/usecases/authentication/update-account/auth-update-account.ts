@@ -9,7 +9,6 @@ export class AuthUpdateAccount implements UpdateAccount {
     const user = await this.auth.updateAccount(token, data)
 
     if (user.error) {
-      console.log(user.error)
       return
     }
 

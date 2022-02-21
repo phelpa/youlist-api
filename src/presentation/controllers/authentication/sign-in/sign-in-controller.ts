@@ -10,6 +10,7 @@ import {
   serverError,
   ok
 } from 'presentation/helpers/http-helper'
+import { invalidCredentialsError } from 'presentation/helpers/errors-helper'
 
 export class SignInController implements Controller {
   constructor(
@@ -27,6 +28,9 @@ export class SignInController implements Controller {
       const user = await this.auth.signIn(email, password)
       return ok({ user })
     } catch (error) {
+      if (error.name == 'InvalidCredentials') {
+        return invalidCredentialsError(error)
+      }
       return serverError(error)
     }
   }
